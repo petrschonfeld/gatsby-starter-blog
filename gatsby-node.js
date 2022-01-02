@@ -106,7 +106,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       description: String
       date: Date @dateformat
-      serving: String
+      serving: Int!
     }
 
     type Fields {
