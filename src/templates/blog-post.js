@@ -25,7 +25,6 @@ const BlogPostTemplate = ({ data, location }) => {
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
-          <p>{post.serving}</p>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -82,7 +81,6 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
-      serving
       html
       frontmatter {
         title
