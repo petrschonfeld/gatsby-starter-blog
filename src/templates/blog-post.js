@@ -15,6 +15,7 @@ const BlogPostTemplate = ({ data, location }) => {
       <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
+
       />
       <article
         className="blog-post"
@@ -24,7 +25,7 @@ const BlogPostTemplate = ({ data, location }) => {
         <header>
           <h1 itemProp="headline">{post.frontmatter.title}</h1>
           <p>{post.frontmatter.date}</p>
-          <p>{post.frontmatter.serving}</p>
+          <p>{post.serving}</p>
         </header>
         <section
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -81,12 +82,12 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
+      serving
       html
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
         description
-        serving
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
